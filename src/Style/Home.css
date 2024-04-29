@@ -1,0 +1,100 @@
+.with-bg {
+    background-image: url('../assets/Home-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.register {
+    background-image: url('../assets/Home-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+ 
+.login {
+    background-image: url('../assets/Home-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.reset-req {
+    background-image: url('../assets/bg-8.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.reset {
+    background-image: url('../assets/bg-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.reset-req-h1 {
+    color:chartreuse;
+}
+
+.label-req {
+    font-size: 18px; 
+    font-weight: bold; 
+    color: chartreuse; 
+}
+
+.logo-img {
+    width: 40px; 
+    height: 40px;
+    object-fit: cover;
+}
+
+
+.navbar {
+    z-index: 1000; 
+    position: relative;
+}
+
+.dashboard-container {
+    overflow-x: hidden;
+}
+
+.container-fluid {
+    transition: margin-left 0.3s ease; /* Use margin-left for animation */
+    margin-left: 0; /* Default margin */
+}
+
+.container-fluid.open {
+    margin-left: 250px; /* Adjusted margin for the sidebar */
+}
+
+.navbar-collapse {
+    position: fixed;
+    top: 56px; /* Adjust this to the height of your navbar */
+    width: 250px;
+    left: -250px; /* Initially hide the sidebar off-screen */
+    display: none;
+    background-color: white;
+    z-index: 1000;
+    text-align: center;
+}
+
+.navbar-collapse.show {
+    display: block;
+    left: 0; /* Show the sidebar by setting left to 0 */
+}
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
