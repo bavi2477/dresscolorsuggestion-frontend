@@ -1,36 +1,55 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import './Style/Home.css';
+import Dashboard from './Components/Dashboard';
+import MyAccount from './Components/MyAccount';
+import ColorShades from './Components/ColorShades';
 import UserRegister from './Components/UserRegister';
 import UserLogin from './Components/UserLogin';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import UserPassResetReq from './Components/UserPassResetReq';
 import UserPassReset from './Components/UserPassReset';
 import Home from './Components/Home';
-import Dashboard from './Components/Dashboard';
-import GetCallUsingToken from './Components/GetCallUsingToken';
-import MyAccount from './Components/MyAccount';
-import DashContent from './Components/DashContent';
-import ColorShades from './Components/ColorShades';
+import ComplementaryColor from './Components/ComplementaryColor';
 
 const App = () => {
-  const [token, setToken] = useState('')
+  // State for sliding dashboard
+  const [isOpen, setIsOpen] = useState(false);
+  // State for profile dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // State for token
+  const [token, setToken] = useState('');
+
+  const [userId, setUserId] = useState('');
+  console.log('app token', token);
+
+  // Toggle sliding dashboard
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Toggle profile dropdown
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+
   return (
     <div className="app-container" style={{ backgroundColor: '#f0f0f0' }}>
-     <BrowserRouter>
-     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/register' element={<UserRegister />} />
-      <Route path='/login' element={<UserLogin setToken={setToken} />} />
-      {/* <Route path='/getuser' element={<GetCallUsingToken token={token}  />} /> */}
-      <Route path='/forgot-password' element={<UserPassResetReq />} />
-      <Route path='/reset-password/:token' element={<UserPassReset />} />
-      <Route path='/dashboard/*' element={<Dashboard />} />
-      <Route path='/dashboard/myaccount' element={<MyAccount token={token} />} />
-      <Route path='/dashboard/shades' element={<ColorShades />} />
-      <Route path='/dashboard/complementary' />
-
-     </Routes>
-     </BrowserRouter>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<UserRegister />} />
+          <Route path="/login" element={<UserLogin setToken={setToken} />} />
+          <Route path="/forgot-password" element={<UserPassResetReq />} />
+          <Route path="/reset-password/:token" element={<UserPassReset />} />
+          <Route path="/dashboard" element={<Dashboard isOpen={isOpen} toggleNavbar={toggleNavbar} userId={userId} />}>
+            <Route path="myaccount" element={<MyAccount token={token} setUserId={setUserId} />} />
+            <Route path="shades" element={<ColorShades />} />
+            <Route path="complementary" element={<ComplementaryColor />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

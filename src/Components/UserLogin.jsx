@@ -19,6 +19,7 @@ const UserLogin = ({setToken}) => {
             const res = await axios.post('http://localhost:4000/api/user/login', payloads);
             setResponseMsg(res.data.message);
             setToken(res.data.token);
+            console.log('token', res.data.token);
             setEmail('')
             setPassword('')
             if (res.data.message) {
