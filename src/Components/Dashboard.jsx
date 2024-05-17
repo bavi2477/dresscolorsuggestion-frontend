@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
 import Navbar from './Navbar';
 
-const Dashboard = ({ isOpen, toggleNavbar, userId }) => {
-  console.log('userid in dash', userId);
+const Dashboard = ({ isOpen, toggleNavbar, userId, handleLogout }) => {
   const location = useLocation();
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOccasion, setSelectedOccasion] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const toggleDropdown = (e) => {
     e.stopPropagation();
@@ -18,29 +17,31 @@ const Dashboard = ({ isOpen, toggleNavbar, userId }) => {
   };
 
   const handleGetSuggestions = async () => {
-    if (!selectedOccasion) {
-      alert('Please select an occasion.');
-      return;
-    }
     try {
-      const userId1 = userId;
-      const url = `http://localhost:4000/api/user/dress-suggestion/${userId1}`;
+      const url = `http://localhost:4000/api/user/dress-suggestion/${userId}`;
       const requestData = { occasion: selectedOccasion };
 
       const res = await axios.post(url, requestData);
-      console.log(res.data);
-      toast.success(`Dress color suggestion: ${res.data.color}`);
+      const suggestedColor = res.data.color;
+      setModalMessage(`Dress color suggestion: ${suggestedColor}`);
+      setModalIsOpen(true); // Open the modal
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Error fetching dress suggestion. Please try again later.');
+      setModalMessage('Error fetching dress suggestion. Please try again later.');
+      setModalIsOpen(true); // Open the modal
     }
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setModalMessage('');
   };
 
   const renderMainContent = () => {
     if (location.pathname === '/dashboard') {
       return (
-        <div className={`container-fluid mt-4 ${isOpen ? 'open' : ''}`}>
-          <h1>Welcome to get your preference color for today</h1>
+        <div className={`container-fluid main mt-4 ${isOpen ? 'open' : ''}`}>
+          <h1>Your Suggestions Here!!!</h1>
           <form>
             <div className="form-group">
               <label htmlFor="occasionSelect">Choose an occasion:</label>
@@ -57,9 +58,14 @@ const Dashboard = ({ isOpen, toggleNavbar, userId }) => {
                 <option value="funeral">Funeral</option>
               </select>
             </div>
-            <button type="button" className="btn btn-primary mt-2" onClick={handleGetSuggestions}>
-              Get Suggestion
+            <button
+              type="button"
+              className="btn btn-primary mt-2"
+              onClick={handleGetSuggestions}
+            >
+              {selectedOccasion ? "Get Suggestion using Occasion" : "Get Suggestion using Weather"}
             </button>
+
           </form>
         </div>
       );
@@ -74,8 +80,8 @@ const Dashboard = ({ isOpen, toggleNavbar, userId }) => {
         toggleNavbar={toggleNavbar}
         isDropdownOpen={isDropdownOpen}
         toggleDropdown={toggleDropdown}
+        handleLogout={handleLogout}
       />
-      {renderMainContent()}
       <div className={`navbar-collapse ${isOpen ? 'show' : ''}`}>
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -89,9 +95,30 @@ const Dashboard = ({ isOpen, toggleNavbar, userId }) => {
           </li>
         </ul>
       </div>
-     
+      {renderMainContent()}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Dress Suggestion"
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          },
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+          },
+        }}
+      >
+        <h2>Dress Suggestion</h2>
+        <div>{modalMessage}</div>
+        <button onClick={closeModal} className="btn btn-primary mt-2">Close</button>
+      </Modal>
       <Outlet />
-      <ToastContainer />
     </div>
   );
 };

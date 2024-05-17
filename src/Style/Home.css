@@ -66,19 +66,19 @@
 }
 
 .container-fluid {
-    transition: margin-left 0.3s ease; /* Use margin-left for animation */
-    margin-left: 0; /* Default margin */
+    transition: margin-left 0.3s ease; 
+    margin-left: 0;
 }
 
 .container-fluid.open {
-    margin-left: 250px; /* Adjusted margin for the sidebar */
+    margin-left: 250px;
 }
 
 .navbar-collapse {
     position: fixed;
-    top: 56px; /* Adjust this to the height of your navbar */
+    top: 56px; 
     width: 250px;
-    left: -250px; /* Initially hide the sidebar off-screen */
+    left: -250px; 
     display: none;
     background-color: white;
     z-index: 1000;
@@ -87,7 +87,7 @@
 
 .navbar-collapse.show {
     display: block;
-    left: 0; /* Show the sidebar by setting left to 0 */
+    left: 0;
 }
 
 .dropdown-menu {
@@ -104,8 +104,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh; /* Full viewport height */
+    height: 80vh; 
     text-align: center;
+    background-image: url('../assets/bg-3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .color-shades {
@@ -139,8 +143,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full viewport height */
+    height: 80vh; /* Full viewport height */
     text-align: center;
+    background-image: url('../assets/bg-3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .color-box {
@@ -165,4 +173,31 @@
     margin-top: 10px;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; 
+    text-align: center;
+    background-image: url('../assets/bg-3.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
+.ma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; 
+    background-image: url('../assets/bg-4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.footer .container {
+    text-align: right;
+}

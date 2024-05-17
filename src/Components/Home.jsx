@@ -2,13 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Style/Home.css';
 import logoImage from '../assets/logo.png';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const Home = () => {
     return (
         <div className="container-fluid with-bg">
             <header className="d-flex justify-content-between align-items-center py-3">
-            <div className="logo">
-                    <img src={logoImage} alt="Your Logo" className="logo-img rounded-circle" /> 
+                <div className="logo">
+                    <img src={logoImage} alt="Your Logo" className="logo-img rounded-circle" />
                     Style way
                 </div>
                 <nav>
@@ -52,8 +54,17 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* Testimonials Section */}
-            {/* Footer Section */}
+            <footer className="footer mt-auto  bg-light">
+                <div className="container">
+                    <span className="text-muted">&copy; Bavithra 2024</span>
+                    <ul className="list-inline ">
+                        <li className="list-inline-item"><a href="#"><i className="fab fa-facebook"></i></a></li>
+                        <li className="list-inline-item"><a href="#"><i className="fab fa-instagram"></i></a></li>
+                        <li className="list-inline-item"><a href="#"><i className="fab fa-twitter"></i></a></li>
+                        <li className="list-inline-item"><a href="#"><i className="fab fa-whatsapp"></i></a></li>
+                    </ul>
+                </div>
+            </footer>
         </div>
     );
 };

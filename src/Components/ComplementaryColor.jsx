@@ -18,7 +18,7 @@ const ComplementaryColor = ({ isOpen, toggleNavbar }) => {
             setComplementaryColor(response.data.complementaryColor);
             setColorHexLink(response.data.colorHexLink);
         } catch (error) {
-            setError('Error fetching complementary color. Please try again.');
+            setError('Error for getting complementary for this color try another color.');
             console.error('Error fetching complementary color:', error);
         } finally {
             setLoading(false);
