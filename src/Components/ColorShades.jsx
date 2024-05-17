@@ -13,7 +13,7 @@ const ColorShades = ({ isOpen, toggleNavbar }) => {
         setLoading(true);
         setError('');
         try {
-            const response = await axios.get(`http://localhost:4000/api/user/shades/${colorName}`);
+            const response = await axios.get(`https://dresscolorsuggestion-backend-sefa.onrender.com/api/user/shades/${colorName}`);
             setShades(response.data.shades);
         } catch (error) {
             setError('Error fetching color shades. Please try again.');

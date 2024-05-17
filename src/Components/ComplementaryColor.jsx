@@ -14,7 +14,7 @@ const ComplementaryColor = ({ isOpen, toggleNavbar }) => {
         setLoading(true);
         setError('');
         try {
-            const response = await axios.get(`http://localhost:4000/api/user/complementary/${colorName}`);
+            const response = await axios.get(`https://dresscolorsuggestion-backend-sefa.onrender.com/api/user/complementary/${colorName}`);
             setComplementaryColor(response.data.complementaryColor);
             setColorHexLink(response.data.colorHexLink);
         } catch (error) {

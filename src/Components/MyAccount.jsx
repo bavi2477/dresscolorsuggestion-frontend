@@ -24,7 +24,7 @@ const MyAccount = ({ token, userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:4000/api/user/user-preference/${userId}`, formData, {
+      const res = await axios.post(`https://dresscolorsuggestion-backend-sefa.onrender.com/api/user/user-preference/${userId}`, formData, {
         headers: {
           Authorization: `${token}`
         }

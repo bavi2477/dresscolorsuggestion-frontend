@@ -18,7 +18,7 @@ const Dashboard = ({ isOpen, toggleNavbar, userId, handleLogout }) => {
 
   const handleGetSuggestions = async () => {
     try {
-      const url = `http://localhost:4000/api/user/dress-suggestion/${userId}`;
+      const url = `https://dresscolorsuggestion-backend-sefa.onrender.com/api/user/dress-suggestion/${userId}`;
       const requestData = { occasion: selectedOccasion };
 
       const res = await axios.post(url, requestData);

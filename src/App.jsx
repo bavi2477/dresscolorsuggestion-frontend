@@ -22,7 +22,7 @@ const App = () => {
     const fetchUser = async () => {
       if (token) {
         try {
-          const response = await axios.get('http://localhost:4000/api/user/getuser', {
+          const response = await axios.get('https://dresscolorsuggestion-backend-sefa.onrender.com/api/user/getuser', {
             headers: { Authorization: token }
           });
           const fetchedUserId = response.data.data[0]._id;
