@@ -9,6 +9,10 @@ const Navbar = ({ isOpen, toggleNavbar, isDropdownOpen, toggleDropdown, handleLo
     navigate('/login');
   };
 
+  const handleDropdownItemClick = () => {
+    toggleDropdown();
+  };
+
   return (
     <div className="navbar navbar-light bg-light fixed-top">
       <div className="container-fluid d-flex justify-content-between align-items-center">
@@ -28,12 +32,22 @@ const Navbar = ({ isOpen, toggleNavbar, isDropdownOpen, toggleDropdown, handleLo
             {isDropdownOpen && (
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li>
-                  <Link to="/dashboard/myaccount" className="dropdown-item">
+                  <Link
+                    to="/dashboard/myaccount"
+                    className="dropdown-item"
+                    onClick={handleDropdownItemClick} 
+                  >
                     My Account
                   </Link>
                 </li>
                 <li>
-                  <button className="dropdown-item" onClick={handleLogoutClick}>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => {
+                      handleLogoutClick();
+                      handleDropdownItemClick(); 
+                    }}
+                  >
                     Logout
                   </button>
                 </li>
