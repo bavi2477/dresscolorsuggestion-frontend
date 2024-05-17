@@ -27,17 +27,17 @@ Welcome to the Style Way app! This project is a React application that provides 
 ### Frontend
 
 1. Clone the repository:
-   
+   ```sh
    git clone 
-
+   ```
 2. Install dependencies:
-   
-   npm install
-
+   ```sh
+    npm install
+    ```
 3. Start the frontend server:
-
+   ```sh
    npm start
-
+   ```
 
 ## Usage
 
