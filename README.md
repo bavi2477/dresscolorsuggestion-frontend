@@ -1,13 +1,15 @@
-# Password Reset Flow
+# Style Way: Dress Color Suggestion App
 
-This project is a simple user authentication system built using React for the frontend and a Node.js backend with Express. It allows users to register, login, request password resets, and reset their passwords.
+Welcome to the Style Way app! This project is a React application that provides personalized dress color suggestions based on user preferences, occasions, and weather conditions. Users can register, log in, and manage their accounts to receive tailored color suggestions.
 
 ## Features
 
-- User registration with username, email, and password
-- User login with email and password
-- Password reset request via email
-- Password reset with token verification
+- **User Registration & Login:** Secure user authentication to access personalized features.
+- **Color Suggestions:** Get dress color suggestions for various occasions.
+- **Color Shades:** Explore different shades of a color.
+- **Complementary Colors:** Discover complementary colors for better outfit combinations.
+- **User Preferences:** Save and manage user preferences such as skin tone and location.
+
 
 ## Technologies Used
 
@@ -36,28 +38,40 @@ This project is a simple user authentication system built using React for the fr
 
    npm start
 
-### Backend
-
-1. Navigate to the backend directory
-
-2. Create a `.env` file based on the provided `.env.example` and  configure your MongoDB connection URI, JWT secret, and email configuration for password reset emails.
-
-3. Install dependencies:
-   
-   npm install
 
 ## Usage
 
-- Open your web browser and navigate to `http://localhost:5173` to access the application.
-- Register a new user account or login with an existing one.
-- If you forget your password, click on the "Forgot Password?" link on the login page to request a password reset email.
-- Follow the instructions in the email to reset your password.
+### User Authentication
+- **Register:** Create a new account to access the app's features.
+- **Login:** Log into your account to get personalized suggestions.
+
+### Dashboard
+- **Get Dress Suggestions:** Select an occasion to get color suggestions for your outfit.
+- **Manage Account:** Update your skin tone and location to refine color suggestions.
+
+### Additional Features
+- **Color Shades:** Enter a color name to view various shades of that color.
+- **Complementary Colors:** Find out the complementary color for a given color.
+
+## API Endpoints
+The app interacts with a backend API for user data and color suggestions. Key endpoints include:
+
+- **User Registration:** `POST /api/user/register`
+- **User Login:** `POST /api/user/login`
+- **Get User:** `GET /api/user/getuser`
+- **User Preferences:** `POST /api/user/user-preference/:userId`
+- **Dress Suggestion:** `POST /api/user/dress-suggestion/:userId`
+- **Color Shades:** `GET /api/user/shades/:colorName`
+- **Complementary Colors:** `GET /api/user/complementary/:colorName`
 
 ## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for bug fixes, feature requests, or improvements.
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the project's coding standards and passes all tests.
 
 ## License
+This project is licensed under the MIT License.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Contact
+For any questions or feedback, please contact us at [bavithra.sjh@gmail.com].
+
+
 
